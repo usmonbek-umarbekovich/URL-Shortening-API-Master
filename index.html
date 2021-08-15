@@ -1,20 +1,123 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <script defer src="script.js"></script>
+    <title>Frontend Mentor | Shortly URL shortening API Challenge</title>
+  </head>
+  <body>
+    <!-- Header -->
+    <header id="main-header" class="container">
+      <nav id="navbar">
+        <img src="./images/logo.svg" alt="Logo" class="logo logo-dark"></img>
+        <ul class="nav-links">
+          <li class="nav-item"><a href="#" class="nav-link">Features</a></li>
+          <li class="nav-item"><a href="#" class="nav-link">Pricing</a></li>
+          <li class="nav-item"><a href="#" class="nav-link">Resources</a></li>
+        </ul>
+        <ul class="nav-links authentication">
+          <li class="nav-item"><a href="#" class="nav-link login">Login</a></li>
+          <li class="nav-item">
+            <a href="#" class="btn btn-signup">Sign Up</a>
+          </li>
+        </ul>
+      </nav>
 
-  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
-  <link rel="stylesheet" href="style.css">
-  <script defer src="script.js"></script>
-  <title>Frontend Mentor | Shortly URL shortening API Challenge</title>
-</head>
-<body>  
+      <!-- Showcase -->
+      <div class="showcase">
+        <h1 class="heading">More than just shorter links</h1>
+        <p class="sub-heading">
+          Build your brand’s recognition and get detailed insights on how your
+          links are performing.
+        </p>
+        <button class="btn btn-large btn-start">Get Started</button>
+        <img
+          src="./images/illustration-working.svg"
+          alt="Illustration Working"
+          class="showcase-image"
+        />
+      </div>
+    </header>
 
+    <!-- Main working area -->
+    <main class="working-area">
+      <div class="link-generate">
+        <form class="shortening-form">
+          <input type="text" id="raw-link" placeholder="Shorten a link here...">
+          <p class="error-message">Please add a link</p>
+          <button type="submit" class="btn btn-secondary btn-large btn-shorten">Shorten It!</button>
+        </form>
+        
+        <div class="shorten-result">
+          <div class="result-container">
+            <p class="old-link">https://www.frontendmentor.io</p>
+            <div class="new-link-field">
+              <a class="new-link">https://rel.ink/k4IKyk</a>
+              <button class="btn btn-secondary btn-copy">Copy</button>
+            </div>
+          </div>
 
-  <div class="attribution">
-    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
-    Coded by <a href="#">Usmonbek Rustamov</a>.
-  </div>
-</body>
+          <div class="result-container">
+            <p class="old-link">https://www.frontendmentor.io</p>
+            <div class="new-link-field">
+              <a class="new-link">https://rel.ink/k4IKyk</a>
+              <button class="btn btn-secondary btn-copy">Copy</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="statistics container bg-light">
+        <h1 class="l-heading">Advanced Statistics</h1>
+        <p class="heading-detail">
+          Track how your links are performing across the web with our advanced statistics dashboard.
+        </p>
+
+        <div class="stats-line"></div>
+        <div class="stats-items">
+          <div class="card">
+            <div class="card-icon">
+              <img src="./images/icon-brand-recognition.svg" alt="Brand Recognition">
+            </div>
+            <h2 class="title">Brand Recognition</h2>
+            <p class="card-description">
+              Boost your brand recognition with each click. Generic links don’t mean a thing. Branded links help instil confidence in your content.
+            </p>
+          </div>
+
+          <div class="card">
+            <div class="card-icon">
+              <img src="./images/icon-detailed-records.svg" alt="Detailed Records">
+            </div>
+            <h2 class="title">Detailed Records</h2>
+            <p class="card-description">
+              Gain insights into who is clicking your links. Knowing when and where people engage with your content helps inform better decisions.
+            </p>
+          </div>
+
+          <div class="card">
+            <div class="card-icon">
+              <img src="./images/icon-fully-customizable.svg" alt="Fully Customizable">
+            </div>
+            <h2 class="title">Fully Customizable</h2>
+            <p class="card-description">
+              Improve brand awareness and content discoverability through customizable links, supercharging audience engagement.
+            </p>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="main-footer bg-dark">
+
+    </footer>
+  </body>
 </html>
