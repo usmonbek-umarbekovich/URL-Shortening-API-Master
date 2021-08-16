@@ -17,7 +17,9 @@
     <!-- Header -->
     <header id="main-header" class="container">
       <nav id="navbar">
-        <img src="./images/logo.svg" alt="Logo" class="logo logo-dark"></img>
+        <svg class="logo logo-dark">
+          <use href="./images/logo.svg#logo"></use>
+        </svg>
         <ul class="nav-links">
           <li class="nav-item"><a href="#" class="nav-link">Features</a></li>
           <li class="nav-item"><a href="#" class="nav-link">Pricing</a></li>
@@ -48,20 +50,31 @@
     </header>
 
     <!-- Main working area -->
-    <main class="working-area">
+    <main class="working-area bg-light">
       <div class="container">
         <div class="link-generate">
           <form class="shortening-form">
-            <input type="text" id="raw-link" placeholder="Shorten a link here...">
+            <input
+              type="text"
+              id="raw-link"
+              placeholder="Shorten a link here..."
+            />
             <p class="error-message">Please add a link</p>
-            <button type="submit" class="btn btn-secondary btn-large btn-shorten">Shorten It!</button>
+            <button
+              type="submit"
+              class="btn btn-secondary btn-large btn-shorten"
+            >
+              Shorten It!
+            </button>
           </form>
-          
+
           <div class="shorten-result">
             <div class="result-container">
               <p class="old-link">https://www.frontendmentor.io</p>
               <div class="new-link-field">
-                <a href="https://rel.ink/k4IKyk" class="new-link">https://rel.ink/k4IKyk</a>
+                <a href="https://rel.ink/k4IKyk" class="new-link"
+                  >https://rel.ink/k4IKyk</a
+                >
                 <button class="btn btn-secondary btn-copy">Copy</button>
               </div>
             </div>
@@ -69,48 +82,65 @@
             <div class="result-container">
               <p class="old-link">https://www.frontendmentor.io</p>
               <div class="new-link-field">
-                <a href="https://rel.ink/k4IKyk" class="new-link">https://rel.ink/k4IKyk</a>
+                <a href="https://rel.ink/k4IKyk" class="new-link"
+                  >https://rel.ink/k4IKyk</a
+                >
                 <button class="btn btn-secondary btn-copy">Copy</button>
               </div>
             </div>
           </div>
         </div>
 
-        <div class="statistics bg-light">
+        <div class="statistics">
           <h1 class="l-heading">Advanced Statistics</h1>
           <p class="heading-detail">
-            Track how your links are performing across the web with our advanced statistics dashboard.
+            Track how your links are performing across the web with our advanced
+            statistics dashboard.
           </p>
 
           <div class="stats-items">
             <div class="stats-line"></div>
             <div class="card">
               <div class="card-icon">
-                <img src="./images/icon-brand-recognition.svg" alt="Brand Recognition">
+                <img
+                  src="./images/icon-brand-recognition.svg"
+                  alt="Brand Recognition"
+                />
               </div>
               <h2 class="title">Brand Recognition</h2>
               <p class="card-description">
-                Boost your brand recognition with each click. Generic links don’t mean a thing. Branded links help instil confidence in your content.
+                Boost your brand recognition with each click. Generic links
+                don’t mean a thing. Branded links help instil confidence in your
+                content.
               </p>
             </div>
 
             <div class="card">
               <div class="card-icon">
-                <img src="./images/icon-detailed-records.svg" alt="Detailed Records">
+                <img
+                  src="./images/icon-detailed-records.svg"
+                  alt="Detailed Records"
+                />
               </div>
               <h2 class="title">Detailed Records</h2>
               <p class="card-description">
-                Gain insights into who is clicking your links. Knowing when and where people engage with your content helps inform better decisions.
+                Gain insights into who is clicking your links. Knowing when and
+                where people engage with your content helps inform better
+                decisions.
               </p>
             </div>
 
             <div class="card">
               <div class="card-icon">
-                <img src="./images/icon-fully-customizable.svg" alt="Fully Customizable">
+                <img
+                  src="./images/icon-fully-customizable.svg"
+                  alt="Fully Customizable"
+                />
               </div>
               <h2 class="title">Fully Customizable</h2>
               <p class="card-description">
-                Improve brand awareness and content discoverability through customizable links, supercharging audience engagement.
+                Improve brand awareness and content discoverability through
+                customizable links, supercharging audience engagement.
               </p>
             </div>
           </div>
@@ -118,10 +148,78 @@
       </div>
     </main>
 
-    
+    <section class="boost-links">
+      <div class="container">
+        <h1 class="l-heading">Boost your links today</h1>
+        <button class="btn btn-large btn-start">Get Started</button>
+      </div>
+    </section>
 
-    <footer class="main-footer bg-dark">
-
+    <footer class="main-footer">
+      <div class="container">
+        <div class="footer-container">
+          <svg class="logo logo-light">
+            <use href="./images/logo.svg#logo"></use>
+          </svg>
+          <div class="footer-content">
+            <div class="footer-menu">
+              <p class="lead">Features</p>
+              <ul>
+                <li><a href="#">Link Shortening</a></li>
+                <li><a href="#">Branded Links</a></li>
+                <li><a href="#">Analytics</a></li>
+              </ul>
+            </div>
+            <div class="footer-menu">
+              <p class="lead">Resources</p>
+              <ul>
+                <li><a href="#">Blog</a></li>
+                <li><a href="#">Developers</a></li>
+                <li><a href="#">Support</a></li>
+              </ul>
+            </div>
+            <div class="footer-menu">
+              <p class="lead">Company</p>
+              <ul>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Our Team</a></li>
+                <li><a href="#">Careers</a></li>
+                <li><a href="#">Contact</a></li>
+              </ul>
+            </div>
+            <ul class="social">
+              <li>
+                <a href="https://www.facebook.com">
+                  <svg class="social-icon">
+                    <use href="./images/icon-facebook.svg#facebook"></use>
+                  </svg>
+                </a>
+              </li>
+              <li>
+                <a href="https://www.twitter.com">
+                  <svg class="social-icon">
+                    <use href="./images/icon-twitter.svg#twitter"></use>
+                  </svg>
+                </a>
+              </li>
+              <li>
+                <a href="https://www.pinterest.com">
+                <svg class="social-icon">
+                    <use href="./images/icon-pinterest.svg#pinterest"></use>
+                  </svg>
+                </a>
+              </li>
+              <li>
+                <a href="https://www.instagram.com">
+                  <svg class="social-icon">
+                    <use href="./images/icon-instagram.svg#instagram"></use>
+                  </svg>  
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
     </footer>
   </body>
-</html>
+  </html>
