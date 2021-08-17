@@ -196,6 +196,31 @@ li {
 
 .showcase .heading {
   margin-top: auto;
+  animation: show-from-top 0.7s backwards ease-in-out 0.3s;
+}
+
+@keyframes show-from-top {
+  0% {
+    transform: translateY(-500%);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.showcase .sub-heading {
+  animation: show-from-left 0.7s ease-in-out backwards 1s;
+}
+
+@keyframes show-from-left {
+  0% {
+    transform: translateX(-200%);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
 }
 
 .showcase .showcase-image {
@@ -235,6 +260,25 @@ li {
 
   display: flex;
   gap: 1.5rem;
+}
+
+.hidden {
+  visibility: hidden;
+  opacity: 0;
+}
+
+.show-from-bottom {
+  animation: show-from-bottom 1s backwards ease;
+}
+
+@keyframes show-from-bottom {
+  0% {
+    transform: translateY(500%);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
 }
 
 .shortening-form input {

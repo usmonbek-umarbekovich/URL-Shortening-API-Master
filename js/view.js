@@ -6,7 +6,14 @@ class LinkView {
   #spinner = document.querySelector('.spinner');
   #errorContainer = document.querySelector('.error-message');
   #btnCopied;
+  #observer;
   #link;
+
+  constructor() {
+    this.#observer = this.#getObserver();
+    this.#observe(this.#shortenForm);
+    document.querySelectorAll('.card').forEach(card => this.#observe(card));
+  }
 
   addHandlerShorten(handler) {
     this.#shortenForm.addEventListener('submit', function (e) {
@@ -129,6 +136,28 @@ class LinkView {
     this.#link = link;
     const markup = this.#generateMarkup();
     this.#shortenResults.insertAdjacentHTML('afterbegin', markup);
+    this.#observe(this.#shortenResults.firstElementChild);
+  }
+
+  #revealItem(entries, observer) {
+    const entry = entries[0];
+    console.log(entry);
+    if (!entry.isIntersecting) return;
+    entry.target.classList.remove('hidden');
+    entry.target.classList.add('show-from-bottom');
+    observer.unobserve(entry.target);
+  }
+
+  #getObserver() {
+    return new IntersectionObserver(this.#revealItem, {
+      root: null,
+      threshold: 0.4,
+    });
+  }
+
+  #observe(element) {
+    element.classList.add('hidden');
+    this.#observer.observe(element);
   }
 }
 
