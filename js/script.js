@@ -35,6 +35,7 @@ const init = function () {
   linkView.addHandlerLoad(loadSavedLinks);
   linkView.addHandlerDelete(deleteLink);
   linkView.addHandlerCopy();
+  linkView.addHandlerStart();
 };
 
 init();

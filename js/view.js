@@ -38,6 +38,24 @@ class LinkView {
     });
   }
 
+  addHandlerStart() {
+    const btnStart = document.querySelectorAll('.btn-start');
+    btnStart.forEach(btn =>
+      btn.addEventListener('click', this.#scrolToForm.bind(this))
+    );
+  }
+
+  #scrolToForm() {
+    const rect = this.#shortenForm.getBoundingClientRect();
+    window.scroll({
+      behavior: 'smooth',
+      top: window.pageYOffset + rect.top - 20,
+    });
+    setTimeout(function () {
+      this.#inputField.focus();
+    }, 0);
+  }
+
   #copy(e) {
     const btnCopy = e.target.closest('.btn-copy');
     if (!btnCopy) return;
