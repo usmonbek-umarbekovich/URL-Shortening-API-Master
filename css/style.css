@@ -273,7 +273,7 @@ li {
 
 @keyframes show-from-bottom {
   0% {
-    transform: translateY(500%);
+    transform: translateY(200%);
   }
 
   100% {

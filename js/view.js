@@ -113,7 +113,7 @@ class LinkView {
 
   #generateMarkup() {
     return `
-      <div class="result-container">
+      <div class="result-container hidden">
         <p class="old-link">${this.#link.originalLink}</p>
         <div class="new-link-field">
           <a
@@ -140,12 +140,13 @@ class LinkView {
   }
 
   #revealItem(entries, observer) {
-    const entry = entries[0];
-    console.log(entry);
-    if (!entry.isIntersecting) return;
-    entry.target.classList.remove('hidden');
-    entry.target.classList.add('show-from-bottom');
-    observer.unobserve(entry.target);
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.remove('hidden');
+        entry.target.classList.add('show-from-bottom');
+        observer.unobserve(entry.target);
+      }
+    });
   }
 
   #getObserver() {
@@ -156,7 +157,6 @@ class LinkView {
   }
 
   #observe(element) {
-    element.classList.add('hidden');
     this.#observer.observe(element);
   }
 }
