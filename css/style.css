@@ -156,16 +156,25 @@ li {
   flex-direction: column;
   gap: 4rem;
   margin-bottom: 8rem;
+  margin-top: 7rem;
 }
 
 /* Navbar */
 #main-header #navbar {
+  position: fixed;
+  inset: 0;
+  height: 7rem;
+  background: #fff;
+  z-index: 100;
+}
+
+#navbar .container {
   display: flex;
   align-items: center;
   gap: 3rem;
 }
 
-#navbar .nav-links {
+#navbar .container .nav-links {
   display: flex;
   align-items: center;
   gap: 2rem;

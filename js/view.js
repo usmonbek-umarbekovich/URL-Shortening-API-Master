@@ -54,9 +54,11 @@ class LinkView {
 
   #scrolToForm() {
     const rect = this.#shortenForm.getBoundingClientRect();
+    const navbar = document.querySelector('#navbar');
+    const navHeight = navbar.getBoundingClientRect().height;
     window.scroll({
       behavior: 'smooth',
-      top: window.pageYOffset + rect.top - 20,
+      top: window.pageYOffset + rect.top - navHeight,
     });
     setTimeout(function () {
       this.#inputField.focus();
@@ -151,7 +153,6 @@ class LinkView {
 
   #getObserver() {
     return new IntersectionObserver(this.#revealItem, {
-      root: null,
       threshold: 0.4,
     });
   }
