@@ -9,8 +9,13 @@
       sizes="32x32"
       href="./images/favicon-32x32.png"
     />
-    <link rel="stylesheet" href="style.css" />
-    <script defer src="script.js"></script>
+    <link rel="stylesheet" href="./css/style.css" />
+    <link
+      rel="stylesheet"
+      href="./css/mobile.css"
+      media="screen and (max-width: 768px)"
+    />
+    <script defer type="module" src="./js/script.js"></script>
     <title>Frontend Mentor | Shortly URL shortening API Challenge</title>
   </head>
   <body>
@@ -57,18 +62,23 @@
             <input
               type="text"
               id="raw-link"
+              name="link"
               placeholder="Shorten a link here..."
             />
-            <p class="error-message">Please add a link</p>
+            <p class="error-message"></p>
             <button
               type="submit"
               class="btn btn-secondary btn-large btn-shorten"
             >
+              <svg class="spinner hide-spinner">
+                <use href="./images/spinner.svg#spinner"></use>
+              </svg>
               Shorten It!
             </button>
           </form>
 
           <div class="shorten-result">
+            <!--
             <div class="result-container">
               <p class="old-link">https://www.frontendmentor.io</p>
               <div class="new-link-field">
@@ -78,16 +88,7 @@
                 <button class="btn btn-secondary btn-copy">Copy</button>
               </div>
             </div>
-
-            <div class="result-container">
-              <p class="old-link">https://www.frontendmentor.io</p>
-              <div class="new-link-field">
-                <a href="https://rel.ink/k4IKyk" class="new-link"
-                  >https://rel.ink/k4IKyk</a
-                >
-                <button class="btn btn-secondary btn-copy">Copy</button>
-              </div>
-            </div>
+            -->
           </div>
         </div>
 
@@ -204,7 +205,7 @@
               </li>
               <li>
                 <a href="https://www.pinterest.com">
-                <svg class="social-icon">
+                  <svg class="social-icon">
                     <use href="./images/icon-pinterest.svg#pinterest"></use>
                   </svg>
                 </a>
@@ -213,7 +214,7 @@
                 <a href="https://www.instagram.com">
                   <svg class="social-icon">
                     <use href="./images/icon-instagram.svg#instagram"></use>
-                  </svg>  
+                  </svg>
                 </a>
               </li>
             </ul>
@@ -222,4 +223,4 @@
       </div>
     </footer>
   </body>
-  </html>
+</html>
