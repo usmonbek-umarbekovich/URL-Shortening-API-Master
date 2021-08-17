@@ -12,7 +12,7 @@ class LinkView {
   constructor() {
     this.#observer = this.#getObserver();
     this.#observe(this.#shortenForm);
-    document.querySelectorAll('.card').forEach(card => this.#observe(card));
+    this.#observe(document.querySelector('.stats-items'));
   }
 
   addHandlerShorten(handler) {
@@ -153,7 +153,7 @@ class LinkView {
 
   #getObserver() {
     return new IntersectionObserver(this.#revealItem, {
-      threshold: 0.4,
+      threshold: 0.2,
     });
   }
 
