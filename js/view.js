@@ -19,8 +19,23 @@ class LinkView {
     window.addEventListener('load', handler);
   }
 
-  addHandlerCopy(handler) {
+  addHandlerCopy() {
     this.#shortenResults.addEventListener('click', this.#copy.bind(this));
+  }
+
+  addHandlerDelete(handler) {
+    this.#shortenResults.addEventListener('click', function (e) {
+      const btnDelete = e.target.closest('.remove-link');
+      if (!btnDelete) return;
+
+      const container = e.target.closest('.result-container');
+      const newLink = btnDelete.parentElement.querySelector('.new-link');
+      container.classList.add('hide-link');
+      handler(newLink.textContent);
+      setTimeout(function () {
+        container.remove();
+      }, 1000);
+    });
   }
 
   #copy(e) {
@@ -76,10 +91,17 @@ class LinkView {
       <div class="result-container">
         <p class="old-link">${this.#link.originalLink}</p>
         <div class="new-link-field">
-          <a href="${this.#link.shortLink}" class="new-link"
-            >${this.#link.shortLink}</a
+          <a
+            href="${this.#link.shortLink}"
+            class="new-link"
+            target="_blank"
           >
+            ${this.#link.shortLink}
+          </a>
           <button class="btn btn-secondary btn-copy">Copy</button>
+          <svg class="remove-link">
+            <use href="./images/remove.svg#remove"></use>
+          </svg>
         </div>
       </div>`;
   }

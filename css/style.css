@@ -64,7 +64,7 @@ li {
 }
 
 .btn-dark {
-  background: var(--primary-violet)
+  background: var(--primary-violet);
 }
 
 .btn-dark:hover,
@@ -297,7 +297,14 @@ li {
   justify-content: space-between;
   background: #fff;
   padding: 1rem 1.5rem;
+  gap: 1.5rem;
   border-radius: 10px;
+  transition: transform 0.5s ease-in-out;
+}
+
+.hide-link {
+  transform: translate(-200%);
+  visibility: hidden;
 }
 
 .result-container .old-link {
@@ -313,6 +320,19 @@ li {
 
 .result-container .new-link-field .new-link {
   color: var(--primary-cyan);
+}
+
+.result-container .new-link-field .remove-link {
+  fill: var(--secondary-red);
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  transition: fill 0.3s ease-in-out;
+}
+
+.result-container .new-link-field .remove-link:hover,
+.result-container .new-link-field .remove-link:active {
+  fill: red;
 }
 
 /* Statistics */
@@ -358,7 +378,8 @@ li {
 
 /* Boost Links Section */
 .boost-links {
-  background: url('../images/bg-boost-desktop.svg') no-repeat center center/cover,
+  background: url('../images/bg-boost-desktop.svg') no-repeat center
+      center/cover,
     var(--primary-violet);
   padding: 1rem 0;
   text-align: center;
@@ -409,7 +430,7 @@ li {
 .footer-menu ul {
   display: flex;
   flex-direction: column;
-  gap: .5rem;
+  gap: 0.5rem;
 }
 
 .footer-menu ul li a {

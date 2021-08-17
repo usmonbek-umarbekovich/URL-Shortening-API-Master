@@ -1,5 +1,5 @@
 import linkView from './view.js';
-import { shortenLink, links } from './model.js';
+import * as model from './model.js';
 
 const shorten = async function (form) {
   try {
@@ -11,7 +11,7 @@ const shorten = async function (form) {
 
     const formData = new FormData(form);
     const longLink = formData.get('link');
-    const shortLink = await shortenLink(longLink);
+    const shortLink = await model.shortenLink(longLink);
     linkView.render(shortLink);
   } catch (err) {
     linkView.renderError(err.message);
@@ -21,14 +21,19 @@ const shorten = async function (form) {
 };
 
 const loadSavedLinks = function() {
-  if (links.length > 0) {
-    links.forEach(link => linkView.render(link));
+  if (model.links.length > 0) {
+    model.links.forEach(link => linkView.render(link));
   }
+}
+
+const deleteLink = function(shortLink) {
+  model.deleteLink(shortLink);
 }
 
 const init = function () {
   linkView.addHandlerShorten(shorten);
   linkView.addHandlerLoad(loadSavedLinks);
+  linkView.addHandlerDelete(deleteLink);
   linkView.addHandlerCopy();
 };
 
