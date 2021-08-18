@@ -1,3 +1,7 @@
+const sleep = function (ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+};
+
 class LinkView {
   #shortenForm = document.querySelector('.shortening-form');
   #inputField = document.querySelector('#raw-link');
@@ -5,14 +9,20 @@ class LinkView {
   #btnShorten = document.querySelector('.btn-shorten');
   #spinner = document.querySelector('.spinner');
   #errorContainer = document.querySelector('.error-message');
+  #cards = document.querySelectorAll('.card');
+  #heading = document.querySelector('.heading');
+  #subHeading = document.querySelector('.sub-heading');
+  #lHeading = document.querySelector('.l-heading');
+  #headingDetail = document.querySelector('.heading-detail');
+  #partObserver;
+  #fullObserver;
   #btnCopied;
-  #observer;
   #link;
 
   constructor() {
-    this.#observer = this.#getObserver();
-    this.#observe(this.#shortenForm);
-    this.#observe(document.querySelector('.stats-items'));
+    this.#partObserver = this.#getPartObserver();
+    this.#fullObserver = this.#getFullObserver();
+    this.#observeElements();
   }
 
   addHandlerShorten(handler) {
@@ -31,7 +41,7 @@ class LinkView {
   }
 
   addHandlerDelete(handler) {
-    this.#shortenResults.addEventListener('click', function (e) {
+    this.#shortenResults.addEventListener('click', async function (e) {
       const btnDelete = e.target.closest('.remove-link');
       if (!btnDelete) return;
 
@@ -39,9 +49,8 @@ class LinkView {
       const newLink = btnDelete.parentElement.querySelector('.new-link');
       container.classList.add('hide-link');
       handler(newLink.textContent);
-      setTimeout(function () {
-        container.remove();
-      }, 1000);
+      await sleep(1000);
+      container.remove();
     });
   }
 
@@ -50,6 +59,12 @@ class LinkView {
     btnStart.forEach(btn =>
       btn.addEventListener('click', this.#scrolToForm.bind(this))
     );
+  }
+
+  addHandlerHamburger() {
+    document
+      .querySelector('.hamburger')
+      .addEventListener('click', this.#toggleNavbar);
   }
 
   #scrolToForm() {
@@ -138,27 +153,99 @@ class LinkView {
     this.#link = link;
     const markup = this.#generateMarkup();
     this.#shortenResults.insertAdjacentHTML('afterbegin', markup);
-    this.#observe(this.#shortenResults.firstElementChild);
+    this.#partObserver.observe(this.#shortenResults.firstElementChild);
   }
 
-  #revealItem(entries, observer) {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.remove('hidden');
-        entry.target.classList.add('show-from-bottom');
-        observer.unobserve(entry.target);
-      }
+  async #revealItem(entries, observer) {
+    const intersection = entries
+      .filter(entry => entry.isIntersecting)
+      .map(entry => entry.target);
+    if (intersection.length === 0) return;
+
+    intersection.forEach(el => {
+      observer.unobserve(el);
+    });
+
+    if (intersection.length === 1) {
+      intersection[0].classList.remove('hidden');
+      intersection[0].classList.add('show-from-bottom');
+    }
+
+    const cards = Array.from(this.#cards);
+    if (
+      intersection.length === 3 &&
+      intersection.every(el => cards.includes(el))
+    ) {
+      intersection.forEach(card => {
+        const direction = card.dataset.direction;
+        card.classList.remove('hidden');
+        if (direction === 'bottom') {
+          card.classList.add('show-from-bottom');
+        } else {
+          card.classList.add(`card-${direction}`);
+        }
+      });
+    }
+
+    const headerHeadings = [this.#heading, this.#subHeading];
+    const statsHeadings = [this.#lHeading, this.#headingDetail];
+    if (
+      intersection.length === 2 &&
+      (intersection.every(el => headerHeadings.includes(el)) ||
+        intersection.every(el => statsHeadings.includes(el)))
+    ) {
+      let intervalId;
+      let index = 0;
+      const showText = function () {
+        const el = intersection[index];
+        const direction = el.dataset.direction;
+        el.classList.remove('hidden');
+        el.classList.add(`show-from-${direction}`);
+        index++;
+      };
+      showText();
+      intervalId = setInterval(function () {
+        showText();
+        if (index === 2) clearInterval(intervalId);
+      }, 500);
+    }
+
+    if (intersection.length > 3) {
+      intersection.forEach(el => {
+        el.classList.remove('hidden');
+        el.classList.add('show-from-center');
+      });
+    }
+  }
+
+  #getPartObserver() {
+    return new IntersectionObserver(this.#revealItem.bind(this), {
+      threshold: 0.5,
     });
   }
 
-  #getObserver() {
-    return new IntersectionObserver(this.#revealItem, {
-      threshold: 0.2,
+  #getFullObserver() {
+    return new IntersectionObserver(this.#revealItem.bind(this), {
+      threshold: 1,
+      rootMargin: '5px',
     });
   }
 
-  #observe(element) {
-    this.#observer.observe(element);
+  #observeElements() {
+    [...this.#cards, this.#shortenForm].forEach(el =>
+      this.#partObserver.observe(el)
+    );
+    [
+      this.#heading,
+      this.#lHeading,
+      this.#subHeading,
+      this.#headingDetail,
+    ].forEach(el => this.#fullObserver.observe(el));
+  }
+
+  #toggleNavbar() {
+    const linkContainer = document.querySelector('.link-container');
+    linkContainer.classList.toggle('show-navbar');
   }
 }
 

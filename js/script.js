@@ -34,6 +34,7 @@ const init = function () {
   linkView.addHandlerShorten(shorten);
   linkView.addHandlerLoad(loadSavedLinks);
   linkView.addHandlerDelete(deleteLink);
+  linkView.addHandlerHamburger();
   linkView.addHandlerCopy();
   linkView.addHandlerStart();
 };
