@@ -13,7 +13,7 @@
     <link
       rel="stylesheet"
       href="./css/mobile.css"
-      media="screen and (max-width: 768px)"
+      media="screen and (max-width: 1020px)"
     />
     <script defer type="module" src="./js/script.js"></script>
     <title>Frontend Mentor | Shortly URL shortening API Challenge</title>
@@ -26,35 +26,50 @@
           <svg class="logo logo-dark">
             <use href="./images/logo.svg#logo"></use>
           </svg>
-          <ul class="nav-links">
-            <li class="nav-item"><a href="#" class="nav-link">Features</a></li>
-            <li class="nav-item"><a href="#" class="nav-link">Pricing</a></li>
-            <li class="nav-item"><a href="#" class="nav-link">Resources</a></li>
-          </ul>
-          <ul class="nav-links authentication">
-            <li class="nav-item">
-              <a href="#" class="nav-link login">Login</a>
-            </li>
-            <li class="nav-item">
-              <a href="#" class="btn btn-signup">Sign Up</a>
-            </li>
-          </ul>
+          <div class="link-container">
+            <ul class="nav-links">
+              <li class="nav-item">
+                <a href="#" class="nav-link">Features</a>
+              </li>
+              <li class="nav-item"><a href="#" class="nav-link">Pricing</a></li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">Resources</a>
+              </li>
+            </ul>
+            <ul class="nav-links authentication">
+              <li class="nav-item">
+                <a href="#" class="nav-link login">Login</a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="btn btn-signup">Sign Up</a>
+              </li>
+            </ul>
+          </div>
+          <svg class="hamburger">
+            <use href="./images/hamburger.svg#hamburger"></use>
+          </svg>
         </div>
       </nav>
 
       <!-- Showcase -->
-      <div class="showcase container">
-        <h1 class="heading">More than just shorter links</h1>
-        <p class="sub-heading">
-          Build your brand’s recognition and get detailed insights on how your
-          links are performing.
-        </p>
-        <button class="btn btn-large btn-start">Get Started</button>
-        <img
-          src="./images/illustration-working.svg"
-          alt="Illustration Working"
-          class="showcase-image"
-        />
+      <div class="showcase-container">
+        <div class="container">
+          <div class="showcase">
+            <h1 class="heading hidden" data-direction="top">
+              More than just shorter links
+            </h1>
+            <p class="sub-heading hidden" data-direction="left">
+              Build your brand’s recognition and get detailed insights on how
+              your links are performing.
+            </p>
+            <button class="btn btn-large btn-start">Get Started</button>
+            <img
+              src="./images/illustration-working.svg"
+              alt="Illustration Working"
+              class="showcase-image"
+            />
+          </div>
+        </div>
       </div>
     </header>
 
@@ -100,15 +115,17 @@
         </div>
 
         <div class="statistics">
-          <h1 class="l-heading">Advanced Statistics</h1>
-          <p class="heading-detail">
+          <h1 class="l-heading hidden" data-direction="top">
+            Advanced Statistics
+          </h1>
+          <p class="heading-detail hidden" data-direction="right">
             Track how your links are performing across the web with our advanced
             statistics dashboard.
           </p>
 
-          <div class="stats-items hidden">
+          <div class="stats-items">
             <div class="stats-line"></div>
-            <div class="card">
+            <div class="card hidden" data-direction="left">
               <div class="card-icon">
                 <img
                   src="./images/icon-brand-recognition.svg"
@@ -123,7 +140,7 @@
               </p>
             </div>
 
-            <div class="card">
+            <div class="card hidden" data-direction="bottom">
               <div class="card-icon">
                 <img
                   src="./images/icon-detailed-records.svg"
@@ -138,7 +155,7 @@
               </p>
             </div>
 
-            <div class="card">
+            <div class="card hidden" data-direction="right">
               <div class="card-icon">
                 <img
                   src="./images/icon-fully-customizable.svg"

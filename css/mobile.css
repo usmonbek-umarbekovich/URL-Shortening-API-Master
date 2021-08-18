@@ -1,0 +1,248 @@
+.heading {
+  font-size: 3rem;
+}
+
+.showcase .btn-start {
+  transform: none;
+}
+
+.link-generate .shortening-form {
+  padding: 3rem 2rem;
+}
+
+.working-area .statistics {
+  margin-top: 5rem;
+}
+
+.statistics .stats-items {
+  margin-top: 9rem;
+}
+
+.main-footer {
+  padding: 1rem;
+}
+
+.footer-content .social {
+  gap: 1rem;
+  padding-left: 1rem;
+}
+
+/* Tablet */
+@media (max-width: 850px) {
+  .heading {
+    font-size: 2.5rem;
+  }
+
+  .btn-copy {
+    padding: 0.5rem 1rem;
+  }
+
+  #main-header {
+    margin: 8rem 0 10rem 0;
+  }
+
+  .shortening-form .btn-shorten {
+    width: 9rem;
+    padding: 1rem;
+  }
+
+  .shorten-result .result-container {
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 1rem 0;
+  }
+
+  .result-container .old-link,
+  .result-container .new-link-field {
+    padding: 0 1.5rem;
+  }
+
+  .result-container .old-link {
+    border-bottom: 1px dashed var(--neutral-violet);
+    padding-bottom: 1rem;
+    width: 100%;
+  }
+
+  .result-container .new-link-field {
+    align-self: flex-end;
+    width: 100%;
+  }
+
+  .result-container .new-link-field .new-link {
+    margin-right: auto;
+  }
+
+  .main-footer {
+    padding: 0;
+  }
+
+  .footer-container .logo {
+    flex: 2;
+  }
+
+  .footer-container .footer-content {
+    gap: 1rem;
+  }
+
+  .footer-content .footer-menu {
+    gap: 0.5rem;
+  }
+
+  .footer-menu ul {
+    gap: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  #navbar .container,
+  #navbar .container .link-container {
+    gap: 2rem;
+  }
+
+  .statistics .stats-items {
+    gap: 1rem;
+  }
+
+  .footer-container .logo {
+    flex: 3;
+  }
+
+  .footer-container .social {
+    flex-direction: column;
+    padding-left: 0;
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 714px) {
+  .sub-heading {
+    line-height: 1.6;
+  }
+
+  .hamburger {
+    display: block;
+  }
+
+  #main-header {
+    margin: 4rem 0 7rem 0;
+  }
+
+  #navbar .container {
+    position: relative;
+  }
+
+  #navbar .container .link-container {
+    position: absolute;
+    top: 6rem;
+    left: 50%;
+    transform: translateX(-50%);
+
+    flex-direction: column;
+    align-items: unset;
+    background: var(--primary-violet);
+    width: 92%;
+    height: 0px;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: all 0.4s ease-in-out;
+  }
+
+  .show-navbar {
+    padding: 3rem 2rem !important;
+    height: 30rem !important;
+  }
+
+  .link-container .nav-links {
+    flex-direction: column;
+  }
+
+  .nav-links .nav-link:hover,
+  .nav-links .nav-link:active {
+    color: var(--neutral-gray);
+  }
+
+  .link-container .authentication {
+    margin: 0;
+    align-items: unset;
+    text-align: center;
+    border-top: 1px dashed var(--neutral-violet);
+    padding-top: 2rem;
+  }
+
+  .authentication .btn-signup {
+    width: 100%;
+    font-size: 1.5rem;
+    padding: 1rem 1.5rem;
+  }
+
+  .nav-links .nav-link {
+    font-size: 1.5rem;
+    color: #fff;
+  }
+
+  .showcase-container .showcase {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 0;
+  }
+
+  .showcase .showcase-image {
+    padding-bottom: 1rem;
+    grid-row: 1;
+    grid-column: 1;
+    width: 100%;
+  }
+
+  .showcase .heading {
+    padding-bottom: 1rem;
+  }
+
+  .showcase .btn-start {
+    margin: 2rem auto;
+  }
+
+  .link-generate .shortening-form {
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+    gap: 3rem;
+  }
+
+  .shortening-form input,
+  .shortening-form .btn-shorten {
+    width: 100%;
+  }
+
+  .shortening-form .error-message {
+    top: 6rem;
+    left: 2rem;
+  }
+}
+
+@media (max-width: 660px) {
+  .statistics .stats-items {
+    flex-direction: column;
+    gap: 3rem;
+  }
+
+  .stats-items .stats-line {
+    height: 90%;
+    width: 6px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .card {
+    transform: translateY(0);
+    align-items: center;
+    text-align: center;
+    padding: 4rem 1.5rem 2rem 1.5rem;
+  }
+
+  .card .card-icon {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
