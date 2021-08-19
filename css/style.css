@@ -179,7 +179,7 @@ li {
 #main-header #navbar {
   position: fixed;
   inset: 0;
-  height: 6rem;
+  height: 5rem;
   background: #fff;
   z-index: 100;
 }
@@ -189,7 +189,7 @@ li {
   display: flex;
   align-items: center;
   gap: 3rem;
-  padding-top: 1.5rem;
+  padding-top: 1.2rem;
 }
 
 #navbar .container .link-container {
@@ -521,6 +521,18 @@ li {
   animation: card-right 0.7s ease-in-out backwards;
 }
 
+.card-left-bottom {
+  animation: card-left-bottom 0.7s ease-in-out backwards;
+}
+
+.card-right-bottom {
+  animation: card-right-bottom 0.7s ease-in-out backwards;
+}
+
+.show-card-line {
+  animation: show-card-line 0.5s ease-in-out backwards;
+}
+
 /* Keyframes */
 @keyframes show-from-top {
   0% {
@@ -562,6 +574,16 @@ li {
   }
 }
 
+@keyframes show-from-center {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
 @keyframes card-left {
   0% {
     transform: translate(-200%, -20%);
@@ -582,13 +604,33 @@ li {
   }
 }
 
-@keyframes show-from-center {
+@keyframes card-left-bottom {
   0% {
-    opacity: 0;
+    transform: translateY(200%);
   }
 
   100% {
-    opacity: 1;
+    transform: translateY(-20%);
+  }
+}
+
+@keyframes card-right-bottom {
+  0% {
+    transform: translateY(200%);
+  }
+
+  100% {
+    transform: translateY(20%);
+  }
+}
+
+@keyframes show-card-line {
+  0% {
+    transform: scale(0, 1);
+  }
+
+  100% {
+    transform: scale(1, 1);
   }
 }
 

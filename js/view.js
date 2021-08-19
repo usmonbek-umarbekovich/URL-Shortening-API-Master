@@ -1,18 +1,8 @@
+import * as el from './elements.js';
 import { sleep } from './helpers.js';
 import animation from './animation.js';
 
 class LinkView {
-  #shortenForm = document.querySelector('.shortening-form');
-  #inputField = document.querySelector('#raw-link');
-  #shortenResults = document.querySelector('.shorten-result');
-  #btnShorten = document.querySelector('.btn-shorten');
-  #spinner = document.querySelector('.spinner');
-  #errorContainer = document.querySelector('.error-message');
-  #cards = document.querySelectorAll('.card');
-  #heading = document.querySelector('.heading');
-  #subHeading = document.querySelector('.sub-heading');
-  #lHeading = document.querySelector('.l-heading');
-  #headingDetail = document.querySelector('.heading-detail');
   #partObserver;
   #fullObserver;
   #btnCopied;
@@ -25,7 +15,7 @@ class LinkView {
   }
 
   addHandlerShorten(handler) {
-    this.#shortenForm.addEventListener('submit', function (e) {
+    el.shortenForm.addEventListener('submit', function (e) {
       e.preventDefault();
       handler(this);
     });
@@ -36,11 +26,11 @@ class LinkView {
   }
 
   addHandlerCopy() {
-    this.#shortenResults.addEventListener('click', this.#copy.bind(this));
+    el.shortenResults.addEventListener('click', this.#copy.bind(this));
   }
 
   addHandlerDelete(handler) {
-    this.#shortenResults.addEventListener('click', async function (e) {
+    el.shortenResults.addEventListener('click', async function (e) {
       const btnDelete = e.target.closest('.remove-link');
       if (!btnDelete) return;
 
@@ -54,28 +44,24 @@ class LinkView {
   }
 
   addHandlerStart() {
-    const btnStart = document.querySelectorAll('.btn-start');
-    btnStart.forEach(btn =>
+    el.btnStart.forEach(btn =>
       btn.addEventListener('click', this.#scrolToForm.bind(this))
     );
   }
 
   addHandlerHamburger() {
-    document
-      .querySelector('.hamburger')
-      .addEventListener('click', this.#toggleNavbar);
+    el.hamburger.addEventListener('click', this.#toggleNavbar);
   }
 
   #scrolToForm() {
-    const rect = this.#shortenForm.getBoundingClientRect();
-    const navbar = document.querySelector('#navbar');
-    const navHeight = navbar.getBoundingClientRect().height;
+    const rect = el.shortenForm.getBoundingClientRect();
+    const navHeight = el.navbar.getBoundingClientRect().height;
     window.scroll({
       behavior: 'smooth',
       top: window.pageYOffset + rect.top - navHeight,
     });
     setTimeout(function () {
-      this.#inputField.focus();
+      el.inputField.focus();
     }, 0);
   }
 
@@ -123,81 +109,81 @@ class LinkView {
   }
 
   render(link) {
-    this.#inputField.value = '';
+    el.inputField.value = '';
     this.#link = link;
     const markup = this.#generateMarkup();
-    this.#shortenResults.insertAdjacentHTML('afterbegin', markup);
-    this.#partObserver.observe(this.#shortenResults.firstElementChild);
+    el.shortenResults.insertAdjacentHTML('afterbegin', markup);
+    this.#partObserver.observe(el.shortenResults.firstElementChild);
   }
 
   renderSpinner() {
-    this.#btnShorten.style.background = 'hsl(180, 66%, 70%)';
-    this.#btnShorten.style.cursor = 'not-allowed';
-    this.#btnShorten.disabled = true;
-    this.#spinner.classList.remove('hide-spinner');
+    el.btnShorten.style.background = 'hsl(180, 66%, 70%)';
+    el.btnShorten.style.cursor = 'not-allowed';
+    el.btnShorten.disabled = true;
+    el.spinner.classList.remove('hide-spinner');
   }
 
   removeSpinner() {
-    this.#spinner.classList.add('hide-spinner');
-    this.#btnShorten.style.background = 'hsl(180, 66%, 49%)';
-    this.#btnShorten.style.cursor = 'pointer';
-    this.#btnShorten.disabled = false;
+    el.spinner.classList.add('hide-spinner');
+    el.btnShorten.style.background = 'hsl(180, 66%, 49%)';
+    el.btnShorten.style.cursor = 'pointer';
+    el.btnShorten.disabled = false;
   }
 
   renderError(msg) {
-    this.#inputField.value = '';
-    this.#inputField.style.border = '2px solid hsl(0, 87%, 67%)';
-    this.#errorContainer.textContent = msg;
+    el.inputField.value = '';
+    el.inputField.style.border = '2px solid hsl(0, 87%, 67%)';
+    el.errorContainer.textContent = msg;
   }
 
   removeError() {
-    this.#inputField.style.border = 'none';
-    this.#errorContainer.textContent = '';
+    el.inputField.style.border = 'none';
+    el.errorContainer.textContent = '';
   }
 
-  #revealItem(entries, observer) {
+  async #revealItem(entries, observer) {
     const intersection = entries
       .filter(entry => entry.isIntersecting)
       .map(entry => entry.target);
     if (intersection.length === 0) return;
 
-    intersection.forEach(el => {
-      observer.unobserve(el);
-    });
-
+    // prettier-ignore
     if (intersection.length === 1) {
-      animation.singleElement(intersection);
+      // console.log('single');
+      // animation.singleElement(intersection[0]);
+      animation.cards();
     }
-
-    const cards = Array.from(this.#cards);
-    if (
+    
+    else if (
       intersection.length === 3 &&
-      intersection.every(el => cards.includes(el))
-    ) {
+      intersection.every(el => Array.from(el.cards).includes(el))
+      ) {
+      console.log('cards');
       animation.cards(intersection);
     }
 
-    const headerHeadings = [this.#heading, this.#subHeading];
-    const statsHeadings = [this.#lHeading, this.#headingDetail];
-    if (
+    else if (
       intersection.length === 2 &&
-      (intersection.every(el => headerHeadings.includes(el)) ||
-        intersection.every(el => statsHeadings.includes(el)))
+      (intersection.every(el => [el.heading, el.subHeading].includes(el)) ||
+        intersection.every(el => [el.lHeading, el.headingDetail].includes(el)))
     ) {
+      console.log('headings');
       animation.headings(intersection);
     }
 
-    if (intersection.length > 3) {
+    else if (intersection.length > 3) {
       intersection.forEach(el => {
         el.classList.remove('hidden');
         el.classList.add('show-from-center');
       });
     }
+
+    intersection.forEach(el => observer.unobserve(el));
   }
 
   #getPartObserver() {
     return new IntersectionObserver(this.#revealItem.bind(this), {
-      threshold: 0.5,
+      threshold: 0.3,
     });
   }
 
@@ -209,20 +195,18 @@ class LinkView {
   }
 
   #observeElements() {
-    [...this.#cards, this.#shortenForm].forEach(el =>
-      this.#partObserver.observe(el)
-    );
+    [...el.cards, el.shortenForm].forEach(el => this.#partObserver.observe(el));
     [
-      this.#heading,
-      this.#lHeading,
-      this.#subHeading,
-      this.#headingDetail,
+      el.heading,
+      el.lHeading,
+      el.subHeading,
+      el.headingDetail,
+      el.cardContainer,
     ].forEach(el => this.#fullObserver.observe(el));
   }
 
   #toggleNavbar() {
-    const linkContainer = document.querySelector('.link-container');
-    linkContainer.classList.toggle('show-navbar');
+    el.linkContainer.classList.toggle('show-navbar');
   }
 }
 
