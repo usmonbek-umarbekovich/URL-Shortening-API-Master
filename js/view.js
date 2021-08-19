@@ -1,6 +1,5 @@
-const sleep = function (ms) {
-  return new Promise(resolve => setTimeout(resolve, ms));
-};
+import { sleep } from './helpers.js';
+import animation from './animation.js';
 
 class LinkView {
   #shortenForm = document.querySelector('.shortening-form');
@@ -28,7 +27,7 @@ class LinkView {
   addHandlerShorten(handler) {
     this.#shortenForm.addEventListener('submit', function (e) {
       e.preventDefault();
-      handler(this); // this -> form
+      handler(this);
     });
   }
 
@@ -103,31 +102,6 @@ class LinkView {
     });
   }
 
-  renderSpinner() {
-    this.#btnShorten.style.background = 'hsl(180, 66%, 70%)';
-    this.#btnShorten.style.cursor = 'not-allowed';
-    this.#btnShorten.disabled = true;
-    this.#spinner.classList.remove('hide-spinner');
-  }
-
-  removeSpinner() {
-    this.#spinner.classList.add('hide-spinner');
-    this.#btnShorten.style.background = 'hsl(180, 66%, 49%)';
-    this.#btnShorten.style.cursor = 'pointer';
-    this.#btnShorten.disabled = false;
-  }
-
-  renderError(msg) {
-    this.#inputField.value = '';
-    this.#inputField.style.border = '2px solid hsl(0, 87%, 67%)';
-    this.#errorContainer.textContent = msg;
-  }
-
-  removeError() {
-    this.#inputField.style.border = 'none';
-    this.#errorContainer.textContent = '';
-  }
-
   #generateMarkup() {
     return `
       <div class="result-container hidden">
@@ -156,7 +130,32 @@ class LinkView {
     this.#partObserver.observe(this.#shortenResults.firstElementChild);
   }
 
-  async #revealItem(entries, observer) {
+  renderSpinner() {
+    this.#btnShorten.style.background = 'hsl(180, 66%, 70%)';
+    this.#btnShorten.style.cursor = 'not-allowed';
+    this.#btnShorten.disabled = true;
+    this.#spinner.classList.remove('hide-spinner');
+  }
+
+  removeSpinner() {
+    this.#spinner.classList.add('hide-spinner');
+    this.#btnShorten.style.background = 'hsl(180, 66%, 49%)';
+    this.#btnShorten.style.cursor = 'pointer';
+    this.#btnShorten.disabled = false;
+  }
+
+  renderError(msg) {
+    this.#inputField.value = '';
+    this.#inputField.style.border = '2px solid hsl(0, 87%, 67%)';
+    this.#errorContainer.textContent = msg;
+  }
+
+  removeError() {
+    this.#inputField.style.border = 'none';
+    this.#errorContainer.textContent = '';
+  }
+
+  #revealItem(entries, observer) {
     const intersection = entries
       .filter(entry => entry.isIntersecting)
       .map(entry => entry.target);
@@ -167,8 +166,7 @@ class LinkView {
     });
 
     if (intersection.length === 1) {
-      intersection[0].classList.remove('hidden');
-      intersection[0].classList.add('show-from-bottom');
+      animation.singleElement(intersection);
     }
 
     const cards = Array.from(this.#cards);
@@ -176,15 +174,7 @@ class LinkView {
       intersection.length === 3 &&
       intersection.every(el => cards.includes(el))
     ) {
-      intersection.forEach(card => {
-        const direction = card.dataset.direction;
-        card.classList.remove('hidden');
-        if (direction === 'bottom') {
-          card.classList.add('show-from-bottom');
-        } else {
-          card.classList.add(`card-${direction}`);
-        }
-      });
+      animation.cards(intersection);
     }
 
     const headerHeadings = [this.#heading, this.#subHeading];
@@ -194,20 +184,7 @@ class LinkView {
       (intersection.every(el => headerHeadings.includes(el)) ||
         intersection.every(el => statsHeadings.includes(el)))
     ) {
-      let intervalId;
-      let index = 0;
-      const showText = function () {
-        const el = intersection[index];
-        const direction = el.dataset.direction;
-        el.classList.remove('hidden');
-        el.classList.add(`show-from-${direction}`);
-        index++;
-      };
-      showText();
-      intervalId = setInterval(function () {
-        showText();
-        if (index === 2) clearInterval(intervalId);
-      }, 500);
+      animation.headings(intersection);
     }
 
     if (intersection.length > 3) {
