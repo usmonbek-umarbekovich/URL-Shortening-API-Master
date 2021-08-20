@@ -1,5 +1,4 @@
 import * as el from './elements.js';
-import { sleep } from './helpers.js';
 
 class Animation {
   cards() {
@@ -21,34 +20,9 @@ class Animation {
     }, 500);
   }
 
-  headings(intersection) {
-    let intervalId;
-    let index = 0;
-    const showText = function () {
-      const el = intersection[index];
-      const direction = el.dataset.direction;
-      el.classList.remove('hidden');
-      el.classList.add(`show-from-${direction}`);
-      index++;
-    };
-    showText();
-    intervalId = setInterval(function () {
-      showText();
-      if (index === 2) clearInterval(intervalId);
-    }, 500);
-  }
-
-  singleElement(element) {
+  singleElement(element, direction) {
     element.classList.remove('hidden');
-    if (
-      element.classList.contains('card') &&
-      element.dataset.direction !== 'bottom'
-    ) {
-      const direction = element.dataset.direction;
-      element.classList.add(`card-${direction}-bottom`);
-    } else {
-      element.classList.add('show-from-bottom');
-    }
+    element.classList.add(`show-from-${direction}`);
   }
 }
 
