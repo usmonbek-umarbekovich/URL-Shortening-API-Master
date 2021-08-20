@@ -161,11 +161,6 @@ class LinkView {
       const distFromTop = entry.boundingClientRect.top;
       const distFromBottom = window.innerHeight - distFromTop;
 
-      if (entry.boundingClientRect.top > 0 || observer === this.#topObserver) {
-        this.#partObserver.unobserve(entry.target);
-        this.#topObserver.unobserve(entry.target);
-      }
-
       // prettier-ignore
       if (entry.boundingClientRect.top > 0) {
         if (distFromTop > distFromBottom) {
@@ -175,9 +170,18 @@ class LinkView {
           animation.singleElement(entry.target, 'top');
         }
       }
+
+      else if (observer === this.#partObserver) {
+        this.#partObserver.unobserve(entry.target);
+      }
       
       else if (observer === this.#topObserver) {
-        animation.singleElement(emtry.target, 'top');
+        animation.singleElement(entry.target, 'top');
+      }
+
+      if (distFromTop > 0 || observer === this.#topObserver) {
+        this.#partObserver.unobserve(entry.target);
+        this.#topObserver.unobserve(entry.target);
       }
     });
   }
@@ -196,7 +200,7 @@ class LinkView {
 
   #getTopObserver() {
     return new IntersectionObserver(this.#revealItem.bind(this), {
-      threshold: 0.7,
+      threshold: 0.5,
       rootMargin: `-${el.navbar.getBoundingClientRect().height}px`,
     });
   }
