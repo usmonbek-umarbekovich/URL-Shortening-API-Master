@@ -5,12 +5,14 @@ import animation from './animation.js';
 class LinkView {
   #partObserver;
   #fullObserver;
+  #topObserver;
   #btnCopied;
   #link;
 
   constructor() {
     this.#partObserver = this.#getPartObserver();
     this.#fullObserver = this.#getFullObserver();
+    this.#topObserver = this.#getTopObserver();
     this.#observeElements();
   }
 
@@ -114,6 +116,7 @@ class LinkView {
     const markup = this.#generateMarkup();
     el.shortenResults.insertAdjacentHTML('afterbegin', markup);
     this.#partObserver.observe(el.shortenResults.firstElementChild);
+    this.#topObserver.observe(el.shortenResults.firstElementChild);
   }
 
   renderSpinner() {
@@ -141,68 +144,78 @@ class LinkView {
     el.errorContainer.textContent = '';
   }
 
-  async #revealItem(entries, observer) {
-    const intersection = entries
-      .filter(entry => entry.isIntersecting)
-      .map(entry => entry.target);
-    if (intersection.length === 0) return;
+  #revealItem(entries, observer) {
+    entries = entries.filter(entry => entry.isIntersecting);
+    if (entries.length === 0) return;
 
-    // prettier-ignore
-    if (intersection.length === 1) {
-      // console.log('single');
-      // animation.singleElement(intersection[0]);
+    const cardContainerID = entries.findIndex(
+      entry => entry.target === el.cardContainer
+    );
+    if (cardContainerID !== -1) {
       animation.cards();
-    }
-    
-    else if (
-      intersection.length === 3 &&
-      intersection.every(el => Array.from(el.cards).includes(el))
-      ) {
-      console.log('cards');
-      animation.cards(intersection);
+      entries.splice(cardContainerID, 1);
+      observer.unobserve(el.cardContainer);
     }
 
-    else if (
-      intersection.length === 2 &&
-      (intersection.every(el => [el.heading, el.subHeading].includes(el)) ||
-        intersection.every(el => [el.lHeading, el.headingDetail].includes(el)))
-    ) {
-      console.log('headings');
-      animation.headings(intersection);
-    }
+    entries.forEach(entry => {
+      const distFromTop = entry.boundingClientRect.top;
+      const distFromBottom = window.innerHeight - distFromTop;
 
-    else if (intersection.length > 3) {
-      intersection.forEach(el => {
-        el.classList.remove('hidden');
-        el.classList.add('show-from-center');
-      });
-    }
+      if (entry.boundingClientRect.top > 0 || observer === this.#topObserver) {
+        this.#partObserver.unobserve(entry.target);
+        this.#topObserver.unobserve(entry.target);
+      }
 
-    intersection.forEach(el => observer.unobserve(el));
+      // prettier-ignore
+      if (entry.boundingClientRect.top > 0) {
+        if (distFromTop > distFromBottom) {
+          animation.singleElement(entry.target, 'bottom');
+        }
+        else {
+          animation.singleElement(entry.target, 'top');
+        }
+      }
+      
+      else if (observer === this.#topObserver) {
+        animation.singleElement(emtry.target, 'top');
+      }
+    });
   }
 
   #getPartObserver() {
     return new IntersectionObserver(this.#revealItem.bind(this), {
-      threshold: 0.3,
+      threshold: 0.5,
     });
   }
 
   #getFullObserver() {
     return new IntersectionObserver(this.#revealItem.bind(this), {
       threshold: 1,
-      rootMargin: '5px',
+    });
+  }
+
+  #getTopObserver() {
+    return new IntersectionObserver(this.#revealItem.bind(this), {
+      threshold: 0.7,
+      rootMargin: `-${el.navbar.getBoundingClientRect().height}px`,
     });
   }
 
   #observeElements() {
-    [...el.cards, el.shortenForm].forEach(el => this.#partObserver.observe(el));
-    [
-      el.heading,
-      el.lHeading,
-      el.subHeading,
-      el.headingDetail,
-      el.cardContainer,
-    ].forEach(el => this.#fullObserver.observe(el));
+    if (window.innerWidth <= 660) {
+      el.cardLine.classList.remove('hidden');
+      [...el.cards].forEach(card => {
+        this.#partObserver.observe(card);
+        this.#topObserver.observe(card);
+      });
+    }
+
+    if (window.innerWidth > 660) {
+      this.#fullObserver.observe(el.cardContainer);
+    }
+
+    this.#partObserver.observe(el.shortenForm);
+    this.#topObserver.observe(el.shortenForm);
   }
 
   #toggleNavbar() {
