@@ -331,6 +331,7 @@ li {
 }
 
 .shorten-result .result-container {
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -339,6 +340,7 @@ li {
   gap: 1.5rem;
   border-radius: 10px;
   transition: transform 0.5s ease-in-out;
+  width: 300px
 }
 
 .hide-link {
@@ -348,6 +350,9 @@ li {
 .result-container .old-link {
   color: var(--neutral-dark-violet);
   font-size: 1.3rem;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 .result-container .new-link-field {
