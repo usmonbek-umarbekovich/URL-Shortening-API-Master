@@ -10,6 +10,10 @@
   padding: 3rem 2rem;
 }
 
+.link-generate .result-container {
+  width: calc(100vw - 4rem);
+}
+
 .working-area .statistics {
   margin-top: 5rem;
 }
@@ -317,8 +321,11 @@
     padding: 1.5rem;
   }
 
+  .link-generate .result-container {
+    width: calc(100vw - 2rem);
+  }
+
   .shortening-form input {
     padding: 1rem;
   }
 }
-
