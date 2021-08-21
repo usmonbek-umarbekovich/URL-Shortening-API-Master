@@ -64,7 +64,7 @@ class LinkView {
     });
     setTimeout(function () {
       el.inputField.focus();
-    }, 0);
+    }, 1000);
   }
 
   #copy(e) {
