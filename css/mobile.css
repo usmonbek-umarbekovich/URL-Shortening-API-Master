@@ -140,21 +140,27 @@
 
     flex-direction: column;
     align-items: unset;
-    background: var(--primary-violet);
-    width: 92%;
+    justify-content: space-evenly;
     height: 0px;
-    border-radius: 10px;
+    width: 92%;
+    gap: 0;
+    background: var(--primary-violet);
     overflow: hidden;
+    border-radius: 10px;
     transition: all 0.4s ease-in-out;
   }
 
   .show-navbar {
-    padding: 3rem 2rem !important;
-    height: 30rem !important;
+    padding: 1rem 2rem !important;
+    max-height: 30rem !important;
+    height: 80vh !important;
   }
 
   .link-container .nav-links {
     flex-direction: column;
+    justify-content: space-evenly;
+    height: 100%;
+    gap: 0;
   }
 
   .nav-links .nav-link:hover,
@@ -167,7 +173,6 @@
     align-items: unset;
     text-align: center;
     border-top: 1px dashed var(--neutral-violet);
-    padding-top: 2rem;
   }
 
   .authentication .btn-signup {
