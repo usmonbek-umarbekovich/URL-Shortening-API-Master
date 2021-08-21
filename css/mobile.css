@@ -10,10 +10,6 @@
   padding: 3rem 2rem;
 }
 
-.link-generate .result-container {
-  width: calc(100vw - 4rem);
-}
-
 .working-area .statistics {
   margin-top: 5rem;
 }
@@ -265,6 +261,11 @@
     grid-template-columns: 9fr 1fr;
   }
 
+  .result-container .new-link-field .new-link {
+    grid-column: 1 / span 2;
+    width: 100%;
+  }
+
   .result-container .new-link-field .btn-copy {
     grid-column: 1;
     font-size: 1.3rem;
@@ -319,10 +320,6 @@
 
   .link-generate .shortening-form {
     padding: 1.5rem;
-  }
-
-  .link-generate .result-container {
-    width: calc(100vw - 2rem);
   }
 
   .shortening-form input {
