@@ -259,6 +259,10 @@
     left: 50%;
     transform: translateX(-50%);
   }
+
+  .boost-links {
+    padding: 4rem 0;
+  }
 }
 
 @media (max-width: 620px) {
@@ -325,10 +329,18 @@
   }
 
   .link-generate .shortening-form {
+    background: url('../images/bg-shorten-mobile.svg') no-repeat top right / 85%,
+      var(--primary-violet);
     padding: 1.5rem;
   }
 
   .shortening-form input {
     padding: 1rem;
+  }
+
+  .boost-links {
+    background: url('../images/bg-boost-mobile.svg') no-repeat center
+        center/cover,
+      var(--primary-violet);
   }
 }
