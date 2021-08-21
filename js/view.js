@@ -196,10 +196,14 @@ class LinkView {
   }
 
   #getTopObserver() {
-    let thresholdValue = window.innerWidth > 300 ? 0.5 : 0.1;
+    let thresholdValue = window.innerWidth > 300 ? 0.5 : 0;
+    let rootMarginValue =
+      window.innerHeight > 300
+        ? `-${el.navbar.getBoundingClientRect().height}px`
+        : `-${el.navbar.getBoundingClientRect().height - 20}px`;
     return new IntersectionObserver(this.#revealItem.bind(this), {
       threshold: thresholdValue,
-      rootMargin: `-${el.navbar.getBoundingClientRect().height}px`,
+      rootMargin: rootMarginValue,
     });
   }
 

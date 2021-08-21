@@ -197,8 +197,6 @@
     padding-bottom: 1rem;
     grid-row: 1;
     grid-column: 1;
-    width: 150%;
-    object-fit: contain;
   }
 
   .showcase .heading {
@@ -342,5 +340,24 @@
     background: url('../images/bg-boost-mobile.svg') no-repeat center
         center/cover,
       var(--primary-violet);
+  }
+}
+
+@media (min-width: 500px) and (max-width: 713px) and (max-height: 520px) {
+  #main-header {
+    margin-top: 4rem;
+  }
+
+  .showcase .showcase-image {
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  #main-header #navbar {
+    height: 3.7rem;
+  }
+
+  #navbar .container {
+    padding-top: 0.6rem;
   }
 }
