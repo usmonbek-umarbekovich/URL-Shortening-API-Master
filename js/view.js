@@ -62,9 +62,6 @@ class LinkView {
       behavior: 'smooth',
       top: window.pageYOffset + rect.top - navHeight,
     });
-    setTimeout(function () {
-      el.inputField.focus();
-    }, 1000);
   }
 
   #copy(e) {
