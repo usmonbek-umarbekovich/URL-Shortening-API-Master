@@ -1,3 +1,5 @@
+import '@babel/polyfill';
+import '@babel/runtime/regenerator';
 import * as el from './elements.js';
 
 class Animation {

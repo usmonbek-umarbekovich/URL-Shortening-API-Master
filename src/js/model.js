@@ -1,3 +1,5 @@
+import '@babel/polyfill';
+import '@babel/runtime/regenerator';
 import { API_URL } from './config.js';
 import { AJAX } from './helpers.js';
 
@@ -24,18 +26,18 @@ export const shortenLink = async function (longLink) {
   }
 };
 
-export const deleteLink = function(shortLink) {
+export const deleteLink = function (shortLink) {
   const linkIndex = links.findIndex(link => link.shortLink === shortLink);
   links.splice(linkIndex, 1);
 
   saveLink();
-}
+};
 
-const init = function() {
+const init = function () {
   const savedLink = getSavedLinks();
   if (savedLink && savedLink.length > 0) {
     links = savedLink;
   }
-}
+};
 
 init();
