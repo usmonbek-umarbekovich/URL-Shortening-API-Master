@@ -46,5 +46,6 @@ Use this section to recap over some of your major learnings while working throug
 
 ## Author
 
-- GitHub - [Usmonbek Rustamov](https://github.com/usmonbek-umarbekovich)
+- Website - [Usmonbek Rustamov](https://usmonbek.netlify.app)
+- GitHub - [usmonbek-umarbekovich](https://github.com/usmonbek-umarbekovich)
 - Frontend Mentor - [@usmonbek-umarbekovich](https://www.frontendmentor.io/profile/usmonbek-umarbekovich)
