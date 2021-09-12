@@ -88,6 +88,7 @@ class LinkView {
   }
 
   #generateMarkup() {
+    const removeIcon = new URL('../images/remove.svg', import.meta.url);
     return `
       <div class="result-container hidden">
         <p class="old-link">${this.#link.originalLink}</p>
@@ -101,7 +102,7 @@ class LinkView {
           </a>
           <button class="btn btn-secondary btn-copy">Copy</button>
           <svg class="remove-link">
-            <use href="./images/remove.svg#remove"></use>
+            <use href="${removeIcon}#remove"></use>
           </svg>
         </div>
       </div>`;

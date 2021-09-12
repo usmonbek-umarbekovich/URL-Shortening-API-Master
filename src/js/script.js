@@ -1,3 +1,5 @@
+import '@babel/polyfill';
+import '@babel/runtime/regenerator';
 import linkView from './view.js';
 import * as model from './model.js';
 
@@ -20,15 +22,15 @@ const shorten = async function (form) {
   }
 };
 
-const loadSavedLinks = function() {
+const loadSavedLinks = function () {
   if (model.links.length > 0) {
     model.links.forEach(link => linkView.render(link));
   }
-}
+};
 
-const deleteLink = function(shortLink) {
+const deleteLink = function (shortLink) {
   model.deleteLink(shortLink);
-}
+};
 
 const init = function () {
   linkView.addHandlerShorten(shorten);

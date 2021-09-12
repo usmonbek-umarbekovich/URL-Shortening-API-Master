@@ -23,8 +23,11 @@
 }
 
 .footer-content .social {
-  gap: 1rem;
   padding-left: 1rem;
+}
+
+.footer-content .social li:not(:last-child) {
+  margin-right: 1rem;
 }
 
 /* Tablet */
@@ -50,17 +53,13 @@
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
-    padding: 1rem 0;
-  }
-
-  .result-container .old-link,
-  .result-container .new-link-field {
-    padding: 0 1.5rem;
+    padding: 1rem 1.5rem;
   }
 
   .result-container .old-link {
     border-bottom: 1px dashed var(--neutral-violet);
     padding-bottom: 1rem;
+    margin-bottom: 1rem;
     width: 100%;
   }
 
@@ -81,27 +80,31 @@
     flex: 2;
   }
 
-  .footer-container .footer-content {
-    gap: 1rem;
+  .footer-content .footer-menu:not(:last-child) {
+    margin-right: 1rem;
   }
 
-  .footer-content .footer-menu {
-    gap: 0.5rem;
+  .footer-menu .lead {
+    margin-bottom: 0.5rem;
   }
 
-  .footer-menu ul {
-    gap: 0;
+  .footer-menu ul li:not(:last-child) {
+    margin-bottom: 0;
   }
 }
 
 @media (max-width: 768px) {
-  #navbar .container,
-  #navbar .container .link-container {
-    gap: 2rem;
+  #navbar .container .logo,
+  .link-container .nav-links:not(:last-child) {
+    margin-right: 2rem;
   }
 
-  .statistics .stats-items {
-    gap: 1rem;
+  .stats-items .card:nth-child(2) {
+    margin-right: 1rem;
+  }
+
+  .stats-items .card:nth-child(4) {
+    margin-left: 1rem;
   }
 
   .footer-container .logo {
@@ -111,7 +114,11 @@
   .footer-container .social {
     flex-direction: column;
     padding-left: 0;
-    gap: 1rem;
+  }
+
+  .footer-content .social li:not(:last-child) {
+    margin-right: 0;
+    margin-bottom: 1rem;
   }
 }
 
@@ -144,7 +151,6 @@
     max-height: 0;
     height: 0;
     width: 92%;
-    gap: 0;
     background: var(--primary-violet);
     overflow: hidden;
     border-radius: 10px;
@@ -161,11 +167,15 @@
     flex-direction: column;
     justify-content: space-evenly;
     height: 100%;
-    gap: 0;
   }
 
-  .nav-links .nav-link:hover,
-  .nav-links .nav-link:active {
+  .link-container .nav-links:not(:last-child),
+  .nav-links .nav-item:not(:last-child) {
+    margin-right: 0;
+  }
+
+  .nav-item .nav-link:hover,
+  .nav-item .nav-link:active {
     color: var(--neutral-gray);
   }
 
@@ -182,7 +192,7 @@
     padding: 1rem 1.5rem;
   }
 
-  .nav-links .nav-link {
+  .nav-item .nav-link {
     font-size: 1.5rem;
     color: #fff;
   }
@@ -211,7 +221,11 @@
     flex-direction: column;
     align-items: center;
     padding: 2rem;
-    gap: 3rem;
+  }
+
+  .shortening-form input {
+    margin-right: 0;
+    margin-bottom: 3rem;
   }
 
   .shortening-form input,
@@ -228,7 +242,6 @@
 @media (max-width: 660px) {
   .statistics .stats-items {
     flex-direction: column;
-    gap: 6rem;
   }
 
   .stats-items .stats-line {
@@ -239,17 +252,21 @@
     transform: translate(-50%, -50%);
   }
 
-  .card {
+  .stats-items .card {
     align-items: center;
     text-align: center;
     padding: 4rem 1.5rem 2rem 1.5rem;
   }
 
-  .card:nth-child(2) {
+  .stats-items .card:nth-child(2) {
+    margin-right: 0;
+    margin-bottom: 6rem;
     transform: translateY(0);
   }
 
   .stats-items .card:nth-child(4) {
+    margin-left: 0;
+    margin-top: 6rem;
     transform: translateY(0);
   }
 
@@ -272,6 +289,8 @@
   .result-container .new-link-field .new-link {
     grid-column: 1 / span 2;
     width: 100%;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
   }
 
   .result-container .new-link-field .btn-copy {
@@ -303,17 +322,22 @@
     padding: 2rem 0;
   }
 
-  .main-footer .footer-container {
-    gap: 2.5rem;
+  .footer-container .logo {
+    margin-bottom: 2.5rem;
   }
 
-  .footer-container .footer-content {
-    gap: 2rem;
+  .footer-content .footer-menu:not(:last-child) {
+    margin-right: 0;
+    margin-bottom: 2rem;
   }
 
   .footer-container .social {
     flex-direction: row;
-    gap: 2rem;
+  }
+
+  .footer-content .social li:not(:last-child) {
+    margin-right: 2rem;
+    margin-bottom: 0;
   }
 }
 

@@ -143,7 +143,6 @@ li {
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
-  gap: 1rem;
 }
 
 .card .card-icon {
@@ -153,6 +152,7 @@ li {
   background: var(--primary-violet);
   color: var(--primary-cyan);
   padding: 1rem;
+  margin-bottom: 1rem;
   border-radius: 50%;
   width: 75px;
   height: 75px;
@@ -164,13 +164,13 @@ li {
 
 .card .card-description {
   font-size: 0.9rem;
+  margin-top: 1rem;
 }
 
 /* Header */
 #main-header {
   display: flex;
   flex-direction: column;
-  gap: 4rem;
   margin-bottom: 10rem;
   margin-top: 6rem;
 }
@@ -188,8 +188,12 @@ li {
 #navbar .container .link-container {
   display: flex;
   align-items: center;
-  gap: 3rem;
   padding-top: 1.2rem;
+}
+
+#navbar .container .logo {
+  flex: none;
+  margin-right: 3rem;
 }
 
 #navbar .container .link-container {
@@ -200,23 +204,28 @@ li {
 .link-container .nav-links {
   display: flex;
   align-items: center;
-  gap: 2rem;
+  margin-right: 3rem;
 }
 
-.nav-links .nav-link {
+.nav-links .nav-item:not(:last-child) {
+  margin-right: 2rem;
+}
+
+.nav-item .nav-link {
   color: var(--neutral-violet);
   font-weight: 700;
   font-size: 1rem;
   transition: all 0.3s ease-in-out;
 }
 
-.nav-links .nav-link:hover,
-.nav-links .nav-link:active {
+.nav-item .nav-link:hover,
+.nav-item .nav-link:active {
   color: var(--neutral-dark-violet);
 }
 
 .link-container .authentication {
   margin-left: auto;
+  margin-right: 0;
 }
 
 /* Showcase */
@@ -268,7 +277,6 @@ li {
 .working-area .container .link-generate {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
   margin-top: -7rem;
 }
 
@@ -278,11 +286,10 @@ li {
       center/cover,
     var(--primary-violet);
   padding: 3rem 4rem;
+  margin-bottom: 1.5rem;
   border-radius: 10px;
   position: relative;
-
   display: flex;
-  gap: 1.5rem;
 }
 
 .hidden {
@@ -297,6 +304,7 @@ li {
   border: none;
   outline: none;
   border-radius: 10px;
+  margin-right: 1.5rem;
 }
 
 .shortening-form .btn-shorten {
@@ -331,7 +339,6 @@ li {
 .link-generate .shorten-result {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
 }
 
 .shorten-result .result-container {
@@ -340,9 +347,13 @@ li {
   justify-content: space-between;
   background: #fff;
   padding: 1rem 1.5rem;
-  gap: 1.5rem;
+  margin-bottom: 1rem;
   border-radius: 10px;
   transition: transform 0.5s ease-in-out;
+}
+
+.shorten-result .result-container:last-child {
+  margin-bottom: 0;
 }
 
 .hide-link {
@@ -350,6 +361,7 @@ li {
 }
 
 .result-container .old-link {
+  margin-right: 1.5rem;
   color: var(--neutral-dark-violet);
   font-size: 1.3rem;
   overflow-x: auto;
@@ -371,16 +383,17 @@ li {
 .result-container .new-link-field {
   display: flex;
   align-items: center;
-  gap: 1.5rem;
 }
 
 .result-container .new-link-field .new-link {
+  margin-right: 1.5rem;
   color: var(--primary-cyan);
   overflow-x: auto;
   white-space: nowrap;
 }
 
 .result-container .new-link-field .remove-link {
+  margin-left: 1.5rem;
   fill: var(--secondary-red);
   width: 20px;
   height: 20px;
@@ -399,13 +412,13 @@ li {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1rem;
 }
 
 .statistics .l-heading,
 .statistics .heading-detail {
   text-align: center;
   max-width: 530px;
+  margin-bottom: 1rem;
 }
 
 .statistics .stats-items {
@@ -415,7 +428,6 @@ li {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 2rem;
 }
 
 .stats-items .stats-line {
@@ -426,11 +438,13 @@ li {
   background: var(--primary-cyan);
 }
 
-.card:nth-child(2) {
+.stats-items .card:nth-child(2) {
+  margin-right: 2rem;
   transform: translateY(-20%);
 }
 
-.card:nth-child(4) {
+.stats-items .card:nth-child(4) {
+  margin-left: 2rem;
   transform: translateY(20%);
 }
 
@@ -472,23 +486,26 @@ li {
   justify-content: space-between;
   align-items: flex-start;
 }
-
 .footer-content .footer-menu {
+
   display: flex;
   flex-direction: column;
-  gap: 1rem;
 }
 
 .footer-menu .lead {
   color: #fff;
   font-size: 1rem;
   font-weight: 700;
+  margin-bottom: 1rem;
 }
 
 .footer-menu ul {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+}
+
+.footer-menu ul li:not(:last-child) {
+  margin-bottom: 0.5rem;
 }
 
 .footer-menu ul li a {
@@ -504,7 +521,10 @@ li {
 
 .footer-content .social {
   display: flex;
-  gap: 1.5rem;
+}
+
+.footer-content .social li:not(:last-child) {
+  margin-right: 1.5rem;
 }
 
 .footer-content .social .social-icon {
