@@ -2,9 +2,10 @@
   "name": "url-shortening-api-master",
   "version": "1.0.0",
   "description": "An application where users can shorten their links",
-  "main": "index.html",
+  "source": "index.html",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "parcel",
+    "build": "parcel build"
   },
   "repository": {
     "type": "git",
