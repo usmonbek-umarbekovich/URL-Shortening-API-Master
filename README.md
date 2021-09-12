@@ -28,7 +28,7 @@ Users should be able to:
 ### Links
 
 - Solution URL: [Solution](https://github.com/usmonbek-umarbekovich/URL-Shortening-API-Master)
-- Live Site URL: [Live Site](https://usmonbek-umarbekovich.github.io/URL-Shortening-API-Master/)
+- Live Site URL: [Live Site](https://usmonbek-shortly.netlify.app)
 
 ## My process
 
