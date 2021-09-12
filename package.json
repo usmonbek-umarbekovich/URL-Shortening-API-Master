@@ -1,0 +1,33 @@
+{
+  "name": "url-shortening-api-master",
+  "version": "1.0.0",
+  "description": "An application where users can shorten their links",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/usmonbek-umarbekovich/URL-Shortening-API-Master.git"
+  },
+  "keywords": [
+    "API",
+    "CSS",
+    "HTML",
+    "JavaScript"
+  ],
+  "author": "Usmonbek Rustamov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/usmonbek-umarbekovich/URL-Shortening-API-Master/issues"
+  },
+  "homepage": "https://github.com/usmonbek-umarbekovich/URL-Shortening-API-Master#readme",
+  "plugins": ["@babel/plugin-transform-runtime"],
+  "devDependencies": {
+    "parcel": "^2.0.0-rc.0"
+  },
+  "dependencies": {
+    "@babel/polyfill": "^7.12.1",
+    "@babel/runtime": "^7.15.4"
+  }
+}
