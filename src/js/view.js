@@ -1,5 +1,3 @@
-import '@babel/polyfill';
-import '@babel/runtime/regenerator';
 import * as el from './elements.js';
 import { sleep } from './helpers.js';
 import animation from './animation.js';

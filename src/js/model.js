@@ -1,5 +1,3 @@
-import '@babel/polyfill';
-import '@babel/runtime/regenerator';
 import { API_URL } from './config.js';
 import { AJAX } from './helpers.js';
 
