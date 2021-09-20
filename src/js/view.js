@@ -1,6 +1,6 @@
-import * as el from './elements.js';
-import { sleep } from './helpers.js';
-import animation from './animation.js';
+import * as el from './elements';
+import { sleep } from './helpers';
+import animation from './animation';
 
 class LinkView {
   #partObserver;

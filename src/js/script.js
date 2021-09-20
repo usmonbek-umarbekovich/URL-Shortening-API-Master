@@ -1,7 +1,5 @@
-import '@babel/polyfill';
-import '@babel/runtime/regenerator';
-import linkView from './view.js';
-import * as model from './model.js';
+import linkView from './view';
+import * as model from './model';
 
 const shorten = async function (form) {
   try {

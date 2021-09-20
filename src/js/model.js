@@ -1,5 +1,5 @@
-import { API_URL } from './config.js';
-import { AJAX } from './helpers.js';
+import { API_URL } from './config';
+import { AJAX } from './helpers';
 
 export let links = [];
 

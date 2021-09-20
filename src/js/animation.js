@@ -1,4 +1,4 @@
-import * as el from './elements.js';
+import * as el from './elements';
 
 class Animation {
   cards() {
