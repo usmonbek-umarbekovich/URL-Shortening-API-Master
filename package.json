@@ -30,6 +30,7 @@
     "@babel/plugin-transform-runtime": "^7.15.0",
     "@babel/preset-env": "^7.15.6",
     "@parcel/transformer-image": "^2.0.0-rc.0",
+    "@parcel/transformer-svg-react": "^2.0.0-nightly.1739",
     "parcel": "^2.0.0-rc.0"
   },
   "dependencies": {
