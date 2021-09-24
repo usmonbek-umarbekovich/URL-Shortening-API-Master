@@ -102,7 +102,7 @@ class LinkView {
           </a>
           <button class="btn btn-secondary btn-copy">Copy</button>
           <svg class="remove-link">
-            <use xlink:href="${removeIcon}#remove"></use>
+            <use href="${removeIcon}#remove"></use>
           </svg>
         </div>
       </div>`;
