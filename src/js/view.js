@@ -1,6 +1,7 @@
 import * as el from './elements';
 import { sleep } from './helpers';
 import animation from './animation';
+import removeIcon from 'url:../images/remove.svg'
 
 class LinkView {
   #partObserver;
@@ -88,7 +89,6 @@ class LinkView {
   }
 
   #generateMarkup() {
-    const removeIcon = new URL('../images/remove.svg', import.meta.url)
     return `
       <div class="result-container hidden">
         <p class="old-link">${this.#link.originalLink}</p>
@@ -102,7 +102,7 @@ class LinkView {
           </a>
           <button class="btn btn-secondary btn-copy">Copy</button>
           <svg class="remove-link">
-            <use href="${removeIcon}#remove"></use>
+            <use xlink:href="${removeIcon}#remove"></use>
           </svg>
         </div>
       </div>`;
