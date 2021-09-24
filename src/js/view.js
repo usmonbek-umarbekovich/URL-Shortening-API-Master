@@ -1,7 +1,7 @@
 import * as el from './elements';
 import { sleep } from './helpers';
 import animation from './animation';
-import removeIcon from '../images/remove.svg';
+import removeIcon from 'url:../images/remove.svg';
 
 class LinkView {
   #partObserver;
