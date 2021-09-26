@@ -5,7 +5,7 @@
   "source": "index.html",
   "scripts": {
     "start": "parcel",
-    "build": "parcel build --no-optimize"
+    "build": "parcel build"
   },
   "repository": {
     "type": "git",
