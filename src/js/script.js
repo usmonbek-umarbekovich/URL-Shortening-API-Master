@@ -1,3 +1,4 @@
+import 'intersection-observer';
 import linkView from './view';
 import * as model from './model';
 
