@@ -4,13 +4,6 @@
       "name": "preset-default",
       "params": {
         "overrides": {
-          "cleanupEnableBackground": false,
-          "convertPathData": false,
-          "convertTransform": false,
-          "removeUnknownsAndDefaults": false,
-          "removeNonInheritableGroupAttrs": false,
-          "removeUselessStrokeAndFill": false,
-          "removeUnusedNS": false,
           "cleanupIDs": false,
           "cleanupNumericValues": false,
           "moveElemsAttrsToGroup": false,
