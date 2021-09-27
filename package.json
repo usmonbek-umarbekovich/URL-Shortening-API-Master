@@ -19,6 +19,7 @@
   ],
   "author": "Usmonbek Rustamov",
   "license": "ISC",
+  "browserslist": "> 0.25%, not dead",
   "bugs": {
     "url": "https://github.com/usmonbek-umarbekovich/URL-Shortening-API-Master/issues"
   },
