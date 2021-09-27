@@ -4,10 +4,6 @@
       "name": "preset-default",
       "params": {
         "overrides": {
-          "cleanupIDs": false,
-          "cleanupNumericValues": false,
-          "moveElemsAttrsToGroup": false,
-          "moveGroupAttrsToElems": false,
           "collapseGroups": false,
           "mergePaths": false,
           "convertShapeToPath": false
