@@ -1,3 +1,20 @@
 {
-  
+  "removeDoctype": false,
+  "removeXMLProcInst": false,
+  "removeMetadata": false,
+  "removeTitle": false,
+  "removeDesc": false,
+  "removeUselessDefs": false,
+  "removeEditorsNSData": false,
+  "removeEmptyAttrs": false,
+  "removeHiddenElems": false,
+  "removeEmptyText": false,
+  "removeEmptyContainers": false,
+  "removeViewBox": false,
+  "cleanupEnableBackground": false,
+  "removeUnknownsAndDefaults": false,
+  "removeNonInheritableGroupAttrs": false,
+  "removeUselessStrokeAndFill": false,
+  "removeUnusedNS": false,
+  "collapseGroups": false
 }
