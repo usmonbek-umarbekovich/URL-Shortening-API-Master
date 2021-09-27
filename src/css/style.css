@@ -240,7 +240,7 @@ li {
 .showcase-container .showcase {
   display: grid;
   grid-template-columns: 50% auto;
-  gap: 0.5rem 4rem;
+  grid-gap: 0.5rem 4rem;
 }
 
 .showcase .heading {
